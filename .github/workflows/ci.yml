@@ -1,0 +1,48 @@
+name: Pipeline CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  qa-tests:
+    name: SQLite Churn Mart & ROI Pipeline QA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install CI dependencies
+        run: python -m pip install --upgrade pip && pip install pytest pandas
+
+      - name: Syntax-check pipeline script
+        run: python -m py_compile src/run_pipeline.py
+
+      - name: Build SQLite churn views from raw CSV
+        run: |
+          python - <<'PY'
+          import sqlite3
+          from pathlib import Path
+          import pandas as pd
+
+          root = Path(".")
+          conn = sqlite3.connect(root / "data" / "telco_churn.db")
+          pd.read_csv(root / "data" / "raw" / "Telco-Customer-Churn.csv", dtype=str).to_sql(
+              "raw_telco_churn", conn, if_exists="replace", index=False
+          )
+          conn.executescript((root / "sql" / "01_schema_and_views.sql").read_text(encoding="utf-8"))
+          conn.close()
+          print("Telco Churn SQLite mart built successfully.")
+          PY
+
+      - name: Run automated QA test suite
+        run: pytest -v tests/test_pipeline.py

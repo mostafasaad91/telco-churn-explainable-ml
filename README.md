@@ -1,5 +1,10 @@
 # Telco Customer Churn — Explainable ML & Financial Retention ROI
 
+[![Pipeline CI](https://github.com/mostafasaad91/telco-churn-explainable-ml/actions/workflows/ci.yml/badge.svg)](https://github.com/mostafasaad91/telco-churn-explainable-ml/actions/workflows/ci.yml)
+![Python 3.11](https://img.shields.io/badge/Python-3.11-00E5FF?style=flat-square&logo=python&logoColor=white)
+![XGBoost AUC 0.848](https://img.shields.io/badge/Test%20ROC--AUC-0.8478-8B5CF6?style=flat-square)
+![Profit Lift +27.2%](https://img.shields.io/badge/Retention%20Profit-%2B27.2%25-10B981?style=flat-square)
+
 End-to-end **SQLite + Python + XGBoost + SHAP** customer churn investigation built on the real **IBM Telco Customer Churn** dataset (**7,043 customers**, 21 raw features).
 
 Rather than stopping at model accuracy, this project optimizes the **classification threshold strictly for net 12-month financial profit** and generates a per-customer actionable retention list with top-3 SHAP drivers.
