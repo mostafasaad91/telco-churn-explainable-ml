@@ -1,6 +1,6 @@
 # Telco Customer Churn — Explainable ML & Financial Retention ROI
 
-[![Pipeline CI](https://github.com/mostafasaad91/telco-churn-explainable-ml/actions/workflows/ci.yml/badge.svg)](https://github.com/mostafasaad91/telco-churn-explainable-ml/actions/workflows/ci.yml)
+[![Pipeline CI](https://github.com/mostafasaad91/telco-churn-retention-roi/actions/workflows/ci.yml/badge.svg)](https://github.com/mostafasaad91/telco-churn-retention-roi/actions/workflows/ci.yml)
 ![Python 3.11](https://img.shields.io/badge/Python-3.11-00E5FF?style=flat-square&logo=python&logoColor=white)
 ![XGBoost AUC 0.848](https://img.shields.io/badge/Test%20ROC--AUC-0.8478-8B5CF6?style=flat-square)
 ![Profit Lift +27.2%](https://img.shields.io/badge/Retention%20Profit-%2B27.2%25-10B981?style=flat-square)
@@ -40,7 +40,7 @@ Rather than stopping at model accuracy, this project optimizes the **classificat
 ## Project Architecture
 
 ```text
-telco-churn-explainable-ml/
+telco-churn-retention-roi/
 ├── data/raw/Telco-Customer-Churn.csv   # Real IBM Telco dataset (7,043 rows)
 ├── sql/01_schema_and_views.sql         # SQLite QA audit + feature & segment views
 ├── src/run_pipeline.py                 # Full SQL -> ML -> SHAP -> ROI -> Figures pipeline
